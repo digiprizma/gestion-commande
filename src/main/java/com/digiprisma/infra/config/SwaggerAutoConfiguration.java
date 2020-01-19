@@ -1,5 +1,7 @@
 package com.digiprisma.infra.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,12 +20,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerAutoConfiguration {
 
-//  @Autowired
-//  private BuildProperties buildProperties;
+  @Autowired
+  private BuildProperties buildProperties;
 
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).groupName("Digiprizma").select()
+		return new Docket(DocumentationType.SWAGGER_2).groupName("Digiprizma : "+buildProperties.getName()).select()
 				.apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.boot")))
 				.apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.cloud")))
 				.apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.data.rest.webmvc")))
@@ -32,7 +34,7 @@ public class SwaggerAutoConfiguration {
 
 	private ApiInfo metaData() {
 		return new ApiInfoBuilder().title("Digiprizma").description("REST API for The Digiprizma gestion-commerciale")
-				.version("Development").contact(new Contact("Digiprizma (Gestion-commande)",
+				.version("Development : "+buildProperties.getVersion()).contact(new Contact("Digiprizma (Gestion-commande)",
 						"https://www.digiprizma.com/", "EQUIPE_INTEGREE@digiprizma.com"))
 				.build();
 	}
