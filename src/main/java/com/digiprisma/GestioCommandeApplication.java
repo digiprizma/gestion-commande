@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.digiprisma.infra.repositories.ClientDpoRepository;
-import com.digiprisma.persistence.model.ClientDpo;
+import com.digiprisma.client.infra.repositories.ClientDpoRepository;
+import com.digiprisma.client.persistence.model.ClientDpo;
 
 @EnableAutoConfiguration
 @SpringBootApplication
