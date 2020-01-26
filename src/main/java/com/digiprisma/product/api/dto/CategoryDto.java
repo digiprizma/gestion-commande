@@ -14,8 +14,6 @@ import lombok.NoArgsConstructor;
  *
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @ApiModel(description = "Category object")
 public class CategoryDto {
 

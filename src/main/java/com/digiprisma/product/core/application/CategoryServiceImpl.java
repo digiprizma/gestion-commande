@@ -57,4 +57,9 @@ public class CategoryServiceImpl implements CategoryService {
 		return mapper.toTransferObject(categoryDomaineService.updateCategory(Category));
 	}
 
+	@Override
+	public CategoryDto getCategoryById(String id) {
+		return mapper.toTransferObject(categoryDomaineService.findById(id));
+	}
+
 }

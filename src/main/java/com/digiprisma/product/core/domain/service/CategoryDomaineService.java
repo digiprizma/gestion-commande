@@ -6,6 +6,7 @@ import com.digiprisma.product.core.domain.Category;
 
 public interface CategoryDomaineService {
 
+	Category findById(String id);
 	/**
 	 * Returns all activities.
 	 *

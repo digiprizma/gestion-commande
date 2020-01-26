@@ -34,4 +34,9 @@ public class CategoryDomaineServiceImpl implements CategoryDomaineService {
 		return CategoryRepository.updateCategory(category);
 	}
 
+	@Override
+	public Category findById(String id) {
+		return CategoryRepository.findById(id);
+	}
+
 }

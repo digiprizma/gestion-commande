@@ -1,7 +1,6 @@
 package com.digiprisma.product.api.dto;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -13,9 +12,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryRequest {
+public class ProductRequest {
+		@NotNull(message = "Le produit est obligatoire")
+		@Valid
+		private ProductDto productDto;
 
-	@NotNull(message = "La categorie est obligatoire")
-	@Valid
-	private CategoryDto categoryDto;
 }

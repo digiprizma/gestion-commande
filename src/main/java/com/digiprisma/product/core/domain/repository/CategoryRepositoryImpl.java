@@ -1,6 +1,7 @@
 package com.digiprisma.product.core.domain.repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,12 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 	public Category updateCategory(Category Category) {
 		CategoryDpo CategoryDpo = CategoryDpoRepository.save(mapper.toDpoObject(Category));
 		return mapper.toDomaineObject(CategoryDpo);
+	}
+
+	@Override
+	public Category findById(String id) {
+		Optional<CategoryDpo> categoryDpo = CategoryDpoRepository.findById(id);
+		return mapper.toDomaineObject(categoryDpo.get());
 	}
 
 }

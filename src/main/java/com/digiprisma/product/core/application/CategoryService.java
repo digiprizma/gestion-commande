@@ -11,6 +11,8 @@ import com.digiprisma.product.api.dto.CategoryRequest;
  *
  */
 public interface CategoryService {
+	
+	CategoryDto getCategoryById(String id);
 
 	/**
 	 * Get all Clients

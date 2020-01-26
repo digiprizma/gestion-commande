@@ -1,8 +1,7 @@
-package com.digiprisma.product.core.domain;
+package com.digiprisma.order.core.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,9 +16,8 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Data
 @Builder
-@AllArgsConstructor
 @Slf4j
-public class Category implements Serializable {
+public class Order implements Serializable {
 
 	/**
 	 * 
@@ -27,12 +25,8 @@ public class Category implements Serializable {
 	private static final long serialVersionUID = -1368245622011496237L;
 
 	private String id;
-	private String designation;
-	private List<Product> products;
-	
-	public Category() {
-		this.products = new ArrayList<>();
-	}
-	
-	
+	private String reference;
+	private String client;
+	private String product;
+	private Date orderDate;
 }

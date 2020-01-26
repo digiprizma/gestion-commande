@@ -9,6 +9,8 @@ import com.digiprisma.product.core.domain.Category;
  */
 public interface CategoryRepository {
 
+	Category findById(String id);
+	
 	/**
 	 * Returns all activities.
 	 *
