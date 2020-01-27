@@ -4,8 +4,11 @@ import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 
+import org.springframework.data.annotation.Transient;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModelProperty.AccessMode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +25,8 @@ import lombok.NonNull;
 @ApiModel(description = "Client object")
 public class ClientDto {
 
+	@ApiModelProperty(accessMode = AccessMode.READ_ONLY, readOnly = true)
+	private Long id;
 	@ApiModelProperty(value = "Nom du client", allowableValues = "valeur alphabetique", example = "skander")
     @NotNull(message = "le prenom est obligatoire")
 	private String name;

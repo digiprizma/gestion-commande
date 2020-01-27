@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.digiprisma.client.api.dto.ClientDto;
 import com.digiprisma.client.api.dto.ClientRequest;
+import com.digiprisma.client.api.dto.ClientUpdateDto;
 import com.digiprisma.client.core.domain.Client;
 import com.digiprisma.client.core.application.mapper.ClientMapper;
 import com.digiprisma.client.core.domain.service.ClientDomaineService;
@@ -46,9 +47,8 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public ClientDto updateClient(ClientRequest request) {
-		ClientDto clientDto = request.getClientDto();
-		Client client = mapper.toDomaineObjectFromDto(clientDto);
+	public ClientDto updateClient(ClientUpdateDto request) {
+		Client client = mapper.toDomaineObjectFromUpdateDto(request);
 		return mapper.toTransferObject(clientDomaineService.updateClient(client));
 	}
 

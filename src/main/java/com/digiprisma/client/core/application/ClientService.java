@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.digiprisma.client.api.dto.ClientDto;
 import com.digiprisma.client.api.dto.ClientRequest;
+import com.digiprisma.client.api.dto.ClientUpdateDto;
 
 /**
  * 
@@ -38,5 +39,7 @@ public interface ClientService {
 	 * @param request
 	 * @return
 	 */
-	ClientDto updateClient(ClientRequest request);
+	ClientDto updateClient(ClientUpdateDto request);
+	
+	
 }

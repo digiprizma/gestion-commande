@@ -5,6 +5,7 @@ import java.util.List;
 import org.mapstruct.Mapper;
 
 import com.digiprisma.client.api.dto.ClientDto;
+import com.digiprisma.client.api.dto.ClientUpdateDto;
 import com.digiprisma.client.core.domain.Client;
 import com.digiprisma.client.persistence.model.ClientDpo;
 
@@ -31,6 +32,10 @@ public interface ClientMapper {
    ClientDpo toDpoObject(Client source);
 
    List<ClientDpo> toDpoObject(List<Client> source);
+   
+   Client toDomaineObjectFromUpdateDto(ClientUpdateDto source);
+
+   List<Client> toDomaineObjectFromUpdateDto(List<ClientUpdateDto> source);
    
    
 }

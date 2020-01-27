@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.digiprisma.client.api.dto.ClientRequest;
+import com.digiprisma.client.api.dto.ClientUpdateDto;
 import com.digiprisma.client.core.application.ClientService;
 
 import io.swagger.annotations.Api;
@@ -58,7 +59,7 @@ public class ClientController {
 
 	@PutMapping(value = "/client", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Update client")
-	public ResponseEntity<?> updateClient(@RequestBody @Valid ClientRequest request) throws Exception {
+	public ResponseEntity<?> updateClient(@RequestBody @Valid ClientUpdateDto request) throws Exception {
 		return ResponseEntity.ok(clientService.updateClient(request));
 	}
 }
