@@ -22,7 +22,6 @@ import lombok.NonNull;
 @ApiModel(description = "Client object")
 public class ClientDto {
 
-	private String id;
 	@ApiModelProperty(value = "Nom du client", allowableValues = "valeur alphabetique", example = "skander")
     @NotNull(message = "le prenom est obligatoire")
 	private String name;

@@ -37,7 +37,7 @@ public class ClientRepositoryImpl implements ClientRepository {
 	}
 
 	@Override
-	public void deleteClient(String id) {
+	public void deleteClient(Long id) {
 		clientDpoRepository.deleteById(id);
 	}
 

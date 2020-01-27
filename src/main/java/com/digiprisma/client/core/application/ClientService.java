@@ -31,7 +31,7 @@ public interface ClientService {
 	 * 
 	 * @param id
 	 */
-	void deleteClient(String id);
+	void deleteClient(Long id);
 
 	/**
 	 * 

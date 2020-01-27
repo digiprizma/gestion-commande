@@ -20,7 +20,7 @@ public interface ClientRepository {
 	Client createClient(Client client);
 
 
-	void deleteClient(String id);
+	void deleteClient(Long id);
 
 
 	Client updateClient(Client client);

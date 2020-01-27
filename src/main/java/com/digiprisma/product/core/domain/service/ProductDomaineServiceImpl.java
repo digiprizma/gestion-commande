@@ -44,8 +44,10 @@ public class ProductDomaineServiceImpl implements ProductDomaineService {
 	public List<Product> findAll() {
 		List<Category> categories = categoryDomaineService.findAll();
 		List<Product> products = new ArrayList<Product>();
-		categories.stream().filter(c -> !c.getProducts().isEmpty()).map(c -> c.getProducts())
-				.forEach(list -> products.addAll(list));
+		categories.stream()
+		.filter(c -> !c.getProducts().isEmpty())
+		.map(c -> c.getProducts())
+		.forEach(list -> products.addAll(list));
 		return products;
 	}
 

@@ -25,7 +25,7 @@ public class ClientDomaineServiceImpl implements ClientDomaineService {
 	}
 
 	@Override
-	public void deleteClient(String id) {
+	public void deleteClient(Long id) {
 		clientRepository.deleteClient(id);
 	}
 

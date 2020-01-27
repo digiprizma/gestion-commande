@@ -22,8 +22,8 @@ public class GestioCommandeApplication {
 	@Bean
 	CommandLineRunner start(ClientDpoRepository clientDpoRepository) {
 		clientDpoRepository
-				.save(new ClientDpo("skander", "skander", "bachouche", 706089771, new Date(), "Paris France"));
-		clientDpoRepository.save(new ClientDpo("skander", "rabii", "belkhiri", 22372665, new Date(), "Nabeul Tunisie"));
+				.save(new ClientDpo( "skander", "bachouche", 706089771, new Date(), "Paris France"));
+		clientDpoRepository.save(new ClientDpo("rabii", "belkhiri", 22372665, new Date(), "Nabeul Tunisie"));
 		return args -> {
 			clientDpoRepository.findAll().forEach(System.out::println);
 		};

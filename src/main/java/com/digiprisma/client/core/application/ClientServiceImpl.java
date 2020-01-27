@@ -40,7 +40,7 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public void deleteClient(String id) {
+	public void deleteClient(Long id) {
 		clientDomaineService.deleteClient(id);
 
 	}

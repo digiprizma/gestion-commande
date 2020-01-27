@@ -50,7 +50,7 @@ public class ClientController {
 
 	@DeleteMapping(value = "/client")
 	@ApiOperation(value = "Delete client")
-	public String deleteClient(@RequestParam String id) throws Exception {
+	public String deleteClient(@RequestParam Long id) throws Exception {
 		clientService.deleteClient(id);
 		return HttpStatus.OK.toString();
 
