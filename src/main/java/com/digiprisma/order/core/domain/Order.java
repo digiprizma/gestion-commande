@@ -24,9 +24,9 @@ public class Order implements Serializable {
 	 */
 	private static final long serialVersionUID = -1368245622011496237L;
 
-	private String id;
+	private Long id;
 	private String reference;
-	private String client;
-	private String product;
+	private Long client;
+	private Long product;
 	private Date orderDate;
 }

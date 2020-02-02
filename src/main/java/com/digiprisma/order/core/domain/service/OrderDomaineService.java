@@ -15,7 +15,7 @@ public interface OrderDomaineService {
 
 	Order createOrder(Order Order);
 
-	void deleteOrder(String id);
+	void deleteOrder(Long id);
 
 	Order updateOrder(Order Order);
 }

@@ -20,7 +20,7 @@ public interface OrderRepository {
 	Order createOrder(Order order);
 
 
-	void deleteOrder(String id);
+	void deleteOrder(Long id);
 
 
 	Order updateOrder(Order order);

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.digiprisma.order.api.dto.OrderDto;
 import com.digiprisma.order.api.dto.OrderRequest;
+import com.digiprisma.order.api.dto.OrderUpdateDto;
 import com.digiprisma.order.core.application.mapper.OrderMapper;
 import com.digiprisma.order.core.domain.Order;
 import com.digiprisma.order.core.domain.service.OrderDomaineService;
@@ -40,15 +41,14 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void deleteOrder(String id) {
+	public void deleteOrder(Long id) {
 		orderDomaineService.deleteOrder(id);
 
 	}
 
 	@Override
-	public OrderDto updateOrder(OrderRequest request) {
-		OrderDto orderDto = request.getOrderDto();
-		Order order = mapper.toDomaineObjectFromDto(orderDto);
+	public OrderDto updateOrder(OrderUpdateDto request) {
+		Order order = mapper.toDomaineObjectFromDto(request);
 		return mapper.toTransferObject(orderDomaineService.updateOrder(order));
 	}
 

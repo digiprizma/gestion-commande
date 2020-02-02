@@ -25,7 +25,7 @@ public class OrderDomaineServiceImpl implements OrderDomaineService {
 	}
 
 	@Override
-	public void deleteOrder(String id) {
+	public void deleteOrder(Long id) {
 		OrderRepository.deleteOrder(id);
 	}
 

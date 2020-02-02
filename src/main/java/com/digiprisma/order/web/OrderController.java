@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.digiprisma.order.api.dto.OrderRequest;
+import com.digiprisma.order.api.dto.OrderUpdateDto;
 import com.digiprisma.order.core.application.OrderService;
 
 import io.swagger.annotations.Api;
@@ -50,7 +51,7 @@ public class OrderController {
 
 	@DeleteMapping(value = "/Commande")
 	@ApiOperation(value = "Delete Order")
-	public String deleteOrder(@RequestParam String id) throws Exception {
+	public String deleteOrder(@RequestParam Long id) throws Exception {
 		orderService.deleteOrder(id);
 		return HttpStatus.OK.toString();
 
@@ -58,7 +59,7 @@ public class OrderController {
 
 	@PutMapping(value = "/Commande", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Update Order")
-	public ResponseEntity<?> updateOrder(@RequestBody @Valid OrderRequest request) throws Exception {
+	public ResponseEntity<?> updateOrder(@RequestBody @Valid OrderUpdateDto request) throws Exception {
 		return ResponseEntity.ok(orderService.updateOrder(request));
 	}
 }

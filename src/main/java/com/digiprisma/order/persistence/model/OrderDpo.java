@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,11 +29,14 @@ public class OrderDpo implements Serializable {
 	 */
 	private static final long serialVersionUID = -3445339276682647460L;
 
+	@Transient
+	public static final String SEQUENCE_NAME = "order_sequence";
+
 	@Id
-	private String id;
+	private long id;
 	private String reference;
-	private String client;
-	private String product;
+	private long client;
+	private long product;
 	@CreatedDate
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

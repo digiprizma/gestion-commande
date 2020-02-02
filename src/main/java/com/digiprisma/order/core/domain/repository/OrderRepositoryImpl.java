@@ -41,7 +41,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 	}
 
 	@Override
-	public void deleteOrder(String id) {
+	public void deleteOrder(Long id) {
 		orderDpoRepository.deleteById(id);
 	}
 

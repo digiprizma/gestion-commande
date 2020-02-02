@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.digiprisma.order.api.dto.OrderDto;
 import com.digiprisma.order.api.dto.OrderRequest;
+import com.digiprisma.order.api.dto.OrderUpdateDto;
 
 /**
  * 
@@ -31,12 +32,12 @@ public interface OrderService {
 	 * 
 	 * @param id
 	 */
-	void deleteOrder(String id);
+	void deleteOrder(Long id);
 
 	/**
 	 * 
 	 * @param request
 	 * @return
 	 */
-	OrderDto updateOrder(OrderRequest request);
+	OrderDto updateOrder(OrderUpdateDto request);
 }
