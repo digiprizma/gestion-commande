@@ -16,11 +16,8 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @ApiModel(description = "Category object")
-public class CategoryDto {
-
-	@ApiModelProperty(accessMode = AccessMode.READ_ONLY, readOnly = true)
+public class CategoryUpdateDto  extends CategoryDto{
+	
+	@ApiModelProperty(accessMode = AccessMode.AUTO)
 	private Long id;
-	@ApiModelProperty(value = "Designation du categorie", allowableValues = "valeur alphabetique", example = "Chambre")
-	@NotNull(message = "la designation de categorie est obligatoire")
-	private String designation;
 }

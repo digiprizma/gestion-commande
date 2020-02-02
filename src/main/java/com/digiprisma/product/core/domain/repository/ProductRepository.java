@@ -18,7 +18,7 @@ public interface ProductRepository {
 
 	Product createProduct(Product product);
 
-	void deleteProduct(String id);
+	void deleteProduct(Long id);
 
 	Product updateProduct(Product product);
 }

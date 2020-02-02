@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.digiprisma.product.api.dto.CategoryRequest;
+import com.digiprisma.product.api.dto.CategoryUpdateDto;
 import com.digiprisma.product.core.application.CategoryService;
 
 import io.swagger.annotations.Api;
@@ -50,7 +51,7 @@ public class CategoryController {
 
 	@DeleteMapping(value = "/category")
 	@ApiOperation(value = "Delete category")
-	public String deleteCategory(@RequestParam String id) throws Exception {
+	public String deleteCategory(@RequestParam Long id) throws Exception {
 		categoryService.deleteCategory(id);
 		return HttpStatus.OK.toString();
 
@@ -58,7 +59,7 @@ public class CategoryController {
 
 	@PutMapping(value = "/Category", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Update Category")
-	public ResponseEntity<?> updateCategory(@RequestBody @Valid CategoryRequest request) throws Exception {
+	public ResponseEntity<?> updateCategory(@RequestBody @Valid CategoryUpdateDto request) throws Exception {
 		return ResponseEntity.ok(categoryService.updateCategory(request));
 	}
 }

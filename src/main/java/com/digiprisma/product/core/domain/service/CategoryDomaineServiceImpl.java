@@ -25,7 +25,7 @@ public class CategoryDomaineServiceImpl implements CategoryDomaineService {
 	}
 
 	@Override
-	public void deleteCategory(String id) {
+	public void deleteCategory(Long id) {
 		CategoryRepository.deleteCategory(id);
 	}
 
@@ -35,7 +35,7 @@ public class CategoryDomaineServiceImpl implements CategoryDomaineService {
 	}
 
 	@Override
-	public Category findById(String id) {
+	public Category findById(Long id) {
 		return CategoryRepository.findById(id);
 	}
 

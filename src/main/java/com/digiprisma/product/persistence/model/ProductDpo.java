@@ -7,15 +7,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Document
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDpo {
+
+	@Transient
+	public static final String SEQUENCE_NAME = "product_sequence";
+
 	@Id
-	private String id;
+	private long id;
 	private String designation;
 
 }

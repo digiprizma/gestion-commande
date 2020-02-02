@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 import com.digiprisma.client.persistence.model.ClientDpo;
 
 @Component
-public class SequenceGeneratorListener extends AbstractMongoEventListener<ClientDpo> {
+public class SequenceClientGeneratorListener extends AbstractMongoEventListener<ClientDpo> {
 
 	private SequenceGeneratorService sequenceGenerator;
 
 	@Autowired
-	public SequenceGeneratorListener(SequenceGeneratorService sequenceGenerator) {
+	public SequenceClientGeneratorListener(SequenceGeneratorService sequenceGenerator) {
 		this.sequenceGenerator = sequenceGenerator;
 	}
 

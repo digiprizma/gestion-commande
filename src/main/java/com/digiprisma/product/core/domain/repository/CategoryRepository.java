@@ -9,7 +9,7 @@ import com.digiprisma.product.core.domain.Category;
  */
 public interface CategoryRepository {
 
-	Category findById(String id);
+	Category findById(Long id);
 	
 	/**
 	 * Returns all activities.
@@ -22,7 +22,7 @@ public interface CategoryRepository {
 	Category createCategory(Category category);
 
 
-	void deleteCategory(String id);
+	void deleteCategory(Long id);
 
 
 	Category updateCategory(Category category);

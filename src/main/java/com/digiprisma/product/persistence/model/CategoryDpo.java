@@ -12,7 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Document(collection = "categories")
@@ -20,15 +19,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class CategoryDpo {
+
+	@Transient
+	public static final String SEQUENCE_NAME = "category_sequence";
+
 	@Id
-	private String id;
+	private long id;
 	private String designation;
 	@Field("products")
 	private List<ProductDpo> products;
 	@Transient
 	private Map<String, Object> ignoredAttrsWhenSave;
-	
-	
+
 	public CategoryDpo() {
 		this.products = new ArrayList<ProductDpo>();
 		this.ignoredAttrsWhenSave = new LinkedHashMap<String, Object>();

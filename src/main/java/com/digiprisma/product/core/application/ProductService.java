@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.digiprisma.product.api.dto.ProductDto;
 import com.digiprisma.product.api.dto.ProductRequest;
+import com.digiprisma.product.api.dto.ProductUpdateDto;
 
 /**
  * 
@@ -11,14 +12,16 @@ import com.digiprisma.product.api.dto.ProductRequest;
  *
  */
 public interface ProductService {
-	
 
 	/**
 	 * Get all Clients
 	 * 
 	 * @return
 	 */
-	List<ProductDto> getAllCategories();
+	List<ProductDto> getAllProducts();
+	
+	
+	List<ProductDto> getProductsByCategory(Long idCategory);
 
 	/**
 	 * Create Client
@@ -32,12 +35,12 @@ public interface ProductService {
 	 * 
 	 * @param id
 	 */
-	void deleteProduct(String id, String idCategory);
+	void deleteProduct(String id, Long idCategory);
 
 	/**
 	 * 
 	 * @param request
 	 * @return
 	 */
-	ProductDto updateProduct(ProductRequest request);
+	ProductDto updateProduct(ProductUpdateDto request);
 }

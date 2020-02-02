@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.digiprisma.product.api.dto.CategoryDto;
 import com.digiprisma.product.api.dto.CategoryRequest;
+import com.digiprisma.product.api.dto.CategoryUpdateDto;
 
 /**
  * 
@@ -12,7 +13,7 @@ import com.digiprisma.product.api.dto.CategoryRequest;
  */
 public interface CategoryService {
 	
-	CategoryDto getCategoryById(String id);
+	CategoryDto getCategoryById(Long id);
 
 	/**
 	 * Get all Clients
@@ -33,12 +34,12 @@ public interface CategoryService {
 	 * 
 	 * @param id
 	 */
-	void deleteCategory(String id);
+	void deleteCategory(Long id);
 
 	/**
 	 * 
 	 * @param request
 	 * @return
 	 */
-	CategoryDto updateCategory(CategoryRequest request);
+	CategoryDto updateCategory(CategoryUpdateDto request);
 }

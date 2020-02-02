@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.digiprisma.product.api.dto.ProductRequest;
+import com.digiprisma.product.api.dto.ProductUpdateDto;
 import com.digiprisma.product.core.application.ProductService;
 
 import io.swagger.annotations.Api;
@@ -36,29 +37,37 @@ public class ProductController {
 	 *
 	 * @return a list of Products
 	 */
-	@GetMapping(value = "products", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Get all products")
 	public ResponseEntity<?> getProducts() {
-		return ResponseEntity.ok(productService.getAllCategories());
+		return ResponseEntity.ok(productService.getAllProducts());
 	}
 
-	@PostMapping(value = "/product", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/products", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Create Product")
 	public ResponseEntity<?> createProduct(@RequestBody @Valid ProductRequest request) throws Exception {
 		return ResponseEntity.ok(productService.createProduct(request));
 	}
 
-	@DeleteMapping(value = "/product")
+	@DeleteMapping(value = "/products")
 	@ApiOperation(value = "Delete Product")
-	public String deleteProduct(@RequestParam String idProduct,@RequestParam String idCategory) throws Exception {
+	public String deleteProduct(@RequestParam String idProduct, @RequestParam Long idCategory) throws Exception {
 		productService.deleteProduct(idProduct, idCategory);
 		return HttpStatus.OK.toString();
 
 	}
+	
+	
+	@GetMapping(value = "/products/category",params = "idCategory" ,produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value = "Get Products by category")
+	public ResponseEntity<?> getProductsByCategory( @RequestParam("idCategory") Long idCategory) throws Exception {
+      return ResponseEntity.ok(productService.getProductsByCategory(idCategory));
 
-	@PutMapping(value = "/product", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	}
+
+	@PutMapping(value = "/products", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Update Product")
-	public ResponseEntity<?> updateProduct(@RequestBody @Valid ProductRequest request) throws Exception {
+	public ResponseEntity<?> updateProduct(@RequestBody @Valid ProductUpdateDto request) throws Exception {
 		return ResponseEntity.ok(productService.updateProduct(request));
 	}
 }

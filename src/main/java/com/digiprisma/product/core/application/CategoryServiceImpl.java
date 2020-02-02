@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.digiprisma.product.api.dto.CategoryDto;
 import com.digiprisma.product.api.dto.CategoryRequest;
+import com.digiprisma.product.api.dto.CategoryUpdateDto;
 import com.digiprisma.product.core.application.mapper.CategoryMapper;
 import com.digiprisma.product.core.domain.Category;
 import com.digiprisma.product.core.domain.service.CategoryDomaineService;
@@ -45,20 +46,19 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public void deleteCategory(String id) {
+	public void deleteCategory(Long id) {
 		categoryDomaineService.deleteCategory(id);
 
 	}
 
 	@Override
-	public CategoryDto updateCategory(CategoryRequest request) {
-		CategoryDto CategoryDto = request.getCategoryDto();
-		Category Category = mapper.toDomaineObjectFromDto(CategoryDto);
+	public CategoryDto updateCategory(CategoryUpdateDto request) {
+		Category Category = mapper.toDomaineObjectFromDto(request);
 		return mapper.toTransferObject(categoryDomaineService.updateCategory(Category));
 	}
 
 	@Override
-	public CategoryDto getCategoryById(String id) {
+	public CategoryDto getCategoryById(Long id) {
 		return mapper.toTransferObject(categoryDomaineService.findById(id));
 	}
 

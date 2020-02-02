@@ -15,7 +15,9 @@ public interface ProductDomaineService {
 
 	Product createProduct(Product product);
 
-	void deleteProduct(String idProduct, String idCategory);
+	void deleteProduct(String idProduct, Long idCategory);
 
 	Product updateProduct(Product product);
+
+	List<Product> findAllByCategory(Long idCategory);
 }

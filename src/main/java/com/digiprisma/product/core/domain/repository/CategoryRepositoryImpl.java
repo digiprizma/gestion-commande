@@ -11,6 +11,7 @@ import com.digiprisma.product.core.application.mapper.CategoryMapper;
 import com.digiprisma.product.core.domain.Category;
 import com.digiprisma.product.infra.repositories.CategoryDpoRepository;
 import com.digiprisma.product.persistence.model.CategoryDpo;
+import com.digiprisma.product.persistence.model.ProductDpo;
 
 /**
  * 
@@ -38,7 +39,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 	}
 
 	@Override
-	public void deleteCategory(String id) {
+	public void deleteCategory(Long id) {
 		CategoryDpoRepository.deleteById(id);
 	}
 
@@ -49,9 +50,9 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 	}
 
 	@Override
-	public Category findById(String id) {
-		Optional<CategoryDpo> categoryDpo = CategoryDpoRepository.findById(id);
-		return mapper.toDomaineObject(categoryDpo.get());
+	public Category findById(Long id) {
+		CategoryDpo categoryDpo = CategoryDpoRepository.findById(id).orElse(null);
+		return mapper.toDomaineObject(categoryDpo);
 	}
 
 }
