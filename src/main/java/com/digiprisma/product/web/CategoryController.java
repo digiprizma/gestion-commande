@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Api(value = "Categories", tags = "Categories")
-@RequestMapping(value = "/api/v0/", produces = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(value = "/api/v0/categories", produces = { MediaType.APPLICATION_JSON_VALUE })
 @Slf4j
 public class CategoryController {
 
@@ -37,27 +38,27 @@ public class CategoryController {
 	 *
 	 * @return a list of Categorys
 	 */
-	@GetMapping(value = "categories", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping( produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Get all categories")
 	public ResponseEntity<?> getCategorys() {
 		return ResponseEntity.ok(categoryService.getAllCategories());
 	}
 
-	@PostMapping(value = "category", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Create category")
 	public ResponseEntity<?> createCategory(@RequestBody @Valid CategoryRequest request) throws Exception {
 		return ResponseEntity.ok(categoryService.createCategory(request));
 	}
 
-	@DeleteMapping(value = "/category")
+	@DeleteMapping(value = "/{id}")
 	@ApiOperation(value = "Delete category")
-	public String deleteCategory(@RequestParam Long id) throws Exception {
+	public ResponseEntity<?> deleteCategory(@PathVariable("id") Long id) throws Exception {
 		categoryService.deleteCategory(id);
-		return HttpStatus.OK.toString();
+		return ResponseEntity.ok().build();
 
 	}
 
-	@PutMapping(value = "/Category", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Update Category")
 	public ResponseEntity<?> updateCategory(@RequestBody @Valid CategoryUpdateDto request) throws Exception {
 		return ResponseEntity.ok(categoryService.updateCategory(request));
