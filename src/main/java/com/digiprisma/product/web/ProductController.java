@@ -51,10 +51,9 @@ public class ProductController {
 
 	@DeleteMapping(value = "/products")
 	@ApiOperation(value = "Delete Product")
-	public String deleteProduct(@RequestParam String idProduct, @RequestParam Long idCategory) throws Exception {
+	public ResponseEntity<?> deleteProduct(@RequestParam String idProduct, @RequestParam Long idCategory) throws Exception {
 		productService.deleteProduct(idProduct, idCategory);
-		return HttpStatus.OK.toString();
-
+		return ResponseEntity.ok().build();
 	}
 	
 	

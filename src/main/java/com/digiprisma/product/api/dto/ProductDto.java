@@ -18,4 +18,7 @@ public class ProductDto {
 	private String designation;
 	@NotNull(message = "La categorie est obligatoire")
 	private Long categoryId;
+	private double price;
+	private int amount;
+	private String reference;
 }

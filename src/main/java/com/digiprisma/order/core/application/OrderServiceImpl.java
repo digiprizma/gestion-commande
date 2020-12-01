@@ -1,5 +1,6 @@
 package com.digiprisma.order.core.application;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,6 +37,8 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public OrderDto createOrder(OrderRequest request) {
 		OrderDto orderDto = request.getOrderDto();
+		orderDto.setStatus("En Attente");
+		orderDto.setOrderDate(new Date());
 		Order order = mapper.toDomaineObjectFromDto(orderDto);
 		return mapper.toTransferObject(orderDomaineService.createOrder(order));
 	}

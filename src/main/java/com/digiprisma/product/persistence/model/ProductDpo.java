@@ -20,5 +20,8 @@ public class ProductDpo {
 	@Id
 	private long id;
 	private String designation;
+	private double price;
+	private int amount;
+	private String reference;
 
 }

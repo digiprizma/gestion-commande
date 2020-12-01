@@ -2,6 +2,7 @@ package com.digiprisma.product.core.domain.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,9 +38,14 @@ public class ProductDomaineServiceImpl implements ProductDomaineService {
 	public void deleteProduct(String idProduct, Long idCategory) {
 		Category category = categoryDomaineService.findById(idCategory);
 		List<Product> products = category.getProducts();
-		Product productToDelete = products.stream().filter(p -> p.getId().equals(idProduct)).findFirst().get();
+		Product productToDelete = products.stream().filter(p -> p.getId().toString().equals(idProduct)).findFirst().orElse(null);
+		if(Objects.nonNull(productToDelete)) {
 		products.remove(products.indexOf(productToDelete));
-		category = categoryDomaineService.updateCategory(category);
+		productRepository.deleteProduct(productToDelete.getId()); 
+		categoryDomaineService.updateCategory(category);
+		} else {
+			throw new RuntimeException("cannot delete product   "+ idProduct) ;
+		}
 	}
 
 	@Override

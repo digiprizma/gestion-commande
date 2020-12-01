@@ -2,6 +2,7 @@ package com.digiprisma.order.core.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +28,8 @@ public class Order implements Serializable {
 	private Long id;
 	private String reference;
 	private Long client;
-	private Long product;
+	private List<Product> products;
 	private Date orderDate;
+	private double total;
+	private String status;
 }

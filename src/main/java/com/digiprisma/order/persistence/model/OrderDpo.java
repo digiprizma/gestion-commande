@@ -2,6 +2,7 @@ package com.digiprisma.order.persistence.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -36,10 +37,12 @@ public class OrderDpo implements Serializable {
 	private long id;
 	private String reference;
 	private long client;
-	private long product;
+	private List<ProductDpo> products;
 	@CreatedDate
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date orderDate;
+	private double total;
+	private String status;
 
 }

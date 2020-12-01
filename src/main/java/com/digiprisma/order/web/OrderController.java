@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Api(value = "Commandes", tags = "Commandes")
-@RequestMapping(value = "/api/v0/", produces = { MediaType.APPLICATION_JSON_VALUE })
+@RequestMapping(value = "/api/v0/commandes", produces = { MediaType.APPLICATION_JSON_VALUE })
 @Slf4j
 public class OrderController {
 
@@ -37,19 +37,21 @@ public class OrderController {
 	 *
 	 * @return a list of Orders
 	 */
-	@GetMapping(value = "Commandes", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Get all Orders")
 	public ResponseEntity<?> getOrders() {
 		return ResponseEntity.ok(orderService.getAllOrders());
 	}
+	
+	
 
-	@PostMapping(value = "Commande", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Create Order")
 	public ResponseEntity<?> createOrder(@RequestBody @Valid OrderRequest request) throws Exception {
 		return ResponseEntity.ok(orderService.createOrder(request));
 	}
 
-	@DeleteMapping(value = "/Commande")
+	@DeleteMapping
 	@ApiOperation(value = "Delete Order")
 	public String deleteOrder(@RequestParam Long id) throws Exception {
 		orderService.deleteOrder(id);
@@ -57,7 +59,7 @@ public class OrderController {
 
 	}
 
-	@PutMapping(value = "/Commande", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Update Order")
 	public ResponseEntity<?> updateOrder(@RequestBody @Valid OrderUpdateDto request) throws Exception {
 		return ResponseEntity.ok(orderService.updateOrder(request));

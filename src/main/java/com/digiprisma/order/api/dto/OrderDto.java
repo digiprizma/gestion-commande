@@ -1,6 +1,7 @@
 package com.digiprisma.order.api.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
@@ -31,10 +32,15 @@ public class OrderDto {
 	@ApiModelProperty(value = "client", allowableValues = "valeu numerique", example = "1")
     @NotNull(message = "le client est obligatoire")
 	private Long client;
-	@ApiModelProperty(value = "produit", allowableValues = "valeur alphabetique", example = "1")
+	@ApiModelProperty(value = "products")
     @NotNull(message = "le produit est obligatoire")
-	private Long product;
+	private List<ProductDto> products;
 	@ApiModelProperty(value = "Date de la commande", allowableValues = "date", example = "2020-03-15")
 	private Date orderDate;
+	@ApiModelProperty(value = "total")
+	private double total;
+	@ApiModelProperty(value = "status")
+	// En Attente , En Cours , Terminée, Annulée
+	private String status;
 	
 }
