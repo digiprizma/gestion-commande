@@ -9,7 +9,6 @@ pipeline {
         disableConcurrentBuilds()
     }
     stages {
-       
         stage('Build') {
             steps {
                 withMaven(maven: 'Maven', jdk: 'JDK8') {
