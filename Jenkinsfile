@@ -1,29 +1,10 @@
 def JGITVER_BRANCH_NAME = (BRANCH_NAME as String).replaceAll("[\\s\\-#/\\\\]+", "_").toLowerCase()
 pipeline {
     agent any
-    triggers {
-        GenericTrigger(
-            genericVariables: [
-                [
-                    key: 'pactUrl',
-                    value: '$.pactUrl'
-                ],
-                [
-                    key: 'cause',
-                    value: '$.cause'
-                ]
-            ],
-            causeString: '$cause',
-            regexpFilterText: '$pactUrl',
-            printContributedVariables: true,
-            printPostContent: true
-        )
-    }
     environment {
         DEFAULT_BRANCH = 'develop'
     }
     options {
-        gitLabConnection('scm-mm')
         buildDiscarder(logRotator(numToKeepStr: '5'))
         disableConcurrentBuilds()
     }
