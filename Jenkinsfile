@@ -17,13 +17,7 @@ pipeline {
             }
         }
        
-        stage('Release') {
-            steps {
-                withMaven(maven: 'Maven', jdk: 'JDK8', publisherStrategy: 'EXPLICIT') {
-                    sh 'mvn -B clean deploy -U -Dmaven.test.failure.ignore=true -P prod'
-                }
-            }
-        }
+
         stage('Prepare next release') {
             when {
                 expression { BRANCH_NAME ==~ /\d+\.\d+\.0/ }
