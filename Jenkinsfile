@@ -46,13 +46,13 @@ pipeline {
     }
     post {
         success {
-            updateGithubCommitStatus state: 'success'
+             setBuildStatus("Build succeeded", "SUCCESS")
         }
         unstable {
-            updateGithubCommitStatus state: 'failed'
+            setBuildStatus("Build failed", "FAILURE");
         }
         failure {
-            updateGithubCommitStatus state: 'failed'
+            setBuildStatus("Build failed", "FAILURE");
         }
         always {
             cleanWs()
