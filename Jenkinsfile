@@ -12,26 +12,15 @@ pipeline {
         stage('Build') {
             steps {
                 withMaven(maven: 'Maven', jdk: 'JDK8') {
-                    sh 'mvn -B clean verify -U -P prod $MAVEN_PACT_OPTS'
+                    sh 'mvn -B clean verify -U -P prod'
                 }
             }
         }
-        stage('Analyze') {
-            when {
-                expression { BRANCH_NAME ==~ /(develop|\d+\.\d+\.\d+)/ }
-            }
-            steps {
-                withSonarQubeEnv('MM Sonar') {
-                    withMaven(maven: 'Maven', jdk: 'JDK8') {
-                        sh 'mvn -B sonar:sonar -P prod'
-                    }
-                }
-            }
-        }
+       
         stage('Release') {
             steps {
                 withMaven(maven: 'Maven', jdk: 'JDK8', publisherStrategy: 'EXPLICIT') {
-                    sh 'mvn -B clean deploy -U -Dmaven.test.failure.ignore=true -P prod $MAVEN_PACT_OPTS'
+                    sh 'mvn -B clean deploy -U -Dmaven.test.failure.ignore=true -P prod'
                 }
             }
         }
@@ -57,13 +46,13 @@ pipeline {
     }
     post {
         success {
-            updateGitlabCommitStatus state: 'success'
+            updateGithubCommitStatus state: 'success'
         }
         unstable {
-            updateGitlabCommitStatus state: 'failed'
+            updateGithubCommitStatus state: 'failed'
         }
         failure {
-            updateGitlabCommitStatus state: 'failed'
+            updateGithubCommitStatus state: 'failed'
         }
         always {
             cleanWs()
