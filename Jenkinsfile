@@ -45,15 +45,7 @@ pipeline {
         
     }
     post {
-        success {
-             setBuildStatus("Build succeeded", "SUCCESS")
-        }
-        unstable {
-            setBuildStatus("Build failed", "FAILURE");
-        }
-        failure {
-            setBuildStatus("Build failed", "FAILURE");
-        }
+
         always {
             cleanWs()
         }
